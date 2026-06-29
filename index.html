@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>New Mishra Book House – Books, Knowledge & Culture</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =============================================
+       TOKEN SYSTEM
+       - Ink       #1A1208  (near-black warm)
+       - Paper     #F5EED8  (warm parchment)
+       - Saffron   #E8820C  (signature accent)
+       - Dusk      #3D2B1F  (dark brown)
+       - Mist      #EDE8DC  (section bg)
+       - Crimson   #8B1A1A  (deep red for labels)
+       - Type: Playfair Display (display) + DM Sans (body) + DM Mono (utility)
+    ============================================= */
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:     #1A1208;
+      --paper:   #F5EED8;
+      --saffron: #E8820C;
+      --dusk:    #3D2B1F;
+      --mist:    #EDE8DC;
+      --crimson: #8B1A1A;
+      --white:   #FDFBF5;
+      --ff-display: 'Playfair Display', Georgia, serif;
+      --ff-body:    'DM Sans', system-ui, sans-serif;
+      --ff-mono:    'DM Mono', monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--ff-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      height: 64px;
+      background: var(--dusk);
+      border-bottom: 2px solid var(--saffron);
+    }
+
+    .nav-logo {
+      font-family: var(--ff-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--paper);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-logo span { color: var(--saffron); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--ff-body);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--paper);
+      text-decoration: none;
+      opacity: 0.85;
+      transition: color 0.2s, opacity 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--saffron); opacity: 1; }
+
+    .nav-cta {
+      background: var(--saffron);
+      color: var(--ink) !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: 2px;
+      opacity: 1 !important;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: #d0730a !important; }
+
+    .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; background: none; border: none; padding: 6px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: var(--paper); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-left {
+      background: var(--dusk);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 6vw 5vw 6vw 8vw;
+      position: relative;
+    }
+
+    /* signature element: diagonal saffron stripe behind text */
+    .hero-left::before {
+      content: '';
+      position: absolute;
+      top: 0; right: -40px;
+      width: 80px;
+      height: 100%;
+      background: var(--saffron);
+      transform: skewX(-2deg);
+      z-index: 0;
+    }
+
+    .hero-left > * { position: relative; z-index: 1; }
+
+    .hero-eyebrow {
+      font-family: var(--ff-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--saffron);
+      margin-bottom: 1.4rem;
+    }
+
+    .hero-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2.8rem, 5vw, 5rem);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--paper);
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--saffron);
+    }
+
+    .hero-sub {
+      margin-top: 1.6rem;
+      font-size: 1rem;
+      color: #c8b99b;
+      max-width: 360px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      margin-top: 2.4rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--saffron);
+      color: var(--ink);
+      font-family: var(--ff-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.8rem 1.8rem;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: #d0730a; transform: translateY(-1px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--paper);
+      border: 1.5px solid rgba(255,255,255,0.35);
+      font-family: var(--ff-body);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.8rem 1.8rem;
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--saffron); color: var(--saffron); }
+
+    .hero-stats {
+      margin-top: 3.5rem;
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .stat-num {
+      font-family: var(--ff-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--saffron);
+    }
+    .stat-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #9e8a72;
+      margin-top: 0.1rem;
+    }
+
+    /* ── HERO RIGHT – stacked books illustration ── */
+    .hero-right {
+      background: var(--mist);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-right::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--saffron);
+    }
+
+    .book-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 40px;
+      animation: floatStack 4s ease-in-out infinite;
+    }
+
+    @keyframes floatStack {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .book {
+      border-radius: 4px 10px 10px 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-display);
+      font-style: italic;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.03em;
+      box-shadow: 3px 4px 12px rgba(0,0,0,0.18);
+      position: relative;
+      padding: 0 14px;
+    }
+
+    .book::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 10px;
+      background: rgba(0,0,0,0.18);
+      border-radius: 4px 0 0 4px;
+    }
+
+    .b1 { width: 200px; height: 42px; background: #7B3F00; }
+    .b2 { width: 230px; height: 44px; background: #2C5F2E; }
+    .b3 { width: 180px; height: 40px; background: #1B4D8E; }
+    .b4 { width: 220px; height: 46px; background: var(--crimson); }
+    .b5 { width: 200px; height: 42px; background: #4A4A6A; }
+    .b6 { width: 240px; height: 48px; background: var(--dusk); }
+
+    .hero-quote {
+      position: absolute;
+      bottom: 32px; left: 32px; right: 32px;
+      font-family: var(--ff-display);
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--dusk);
+      opacity: 0.55;
+      text-align: center;
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-strip {
+      background: var(--saffron);
+      color: var(--ink);
+      padding: 0.55rem 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .marquee-inner {
+      display: inline-block;
+      animation: marquee 22s linear infinite;
+      font-family: var(--ff-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ── CATEGORIES ── */
+    .section-pad { padding: 7rem 8vw; }
+
+    .section-label {
+      font-family: var(--ff-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title {
+      font-family: var(--ff-display);
+      font-size: clamp(1.9rem, 3.5vw, 3rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--dusk);
+    }
+
+    .section-title em { font-style: italic; color: var(--saffron); }
+
+    .section-header { margin-bottom: 3.5rem; }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .cat-card {
+      background: var(--white);
+      border: 1.5px solid rgba(0,0,0,0.07);
+      border-radius: 4px;
+      padding: 1.6rem 1.4rem;
+      cursor: pointer;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+      display: block;
+    }
+
+    .cat-card:hover {
+      border-color: var(--saffron);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(232,130,12,0.12);
+    }
+
+    .cat-icon {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+
+    .cat-name {
+      font-family: var(--ff-display);
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--dusk);
+      margin-bottom: 0.2rem;
+    }
+
+    .cat-count {
+      font-family: var(--ff-mono);
+      font-size: 0.7rem;
+      color: #9e8a72;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── FEATURED BOOKS ── */
+    .books-section { background: var(--mist); }
+
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .book-card {
+      background: var(--white);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+      transition: transform 0.25s, box-shadow 0.25s;
+      cursor: pointer;
+    }
+
+    .book-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.13);
+    }
+
+    .book-cover {
+      height: 220px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      padding: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .book-cover::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%);
+    }
+
+    .book-cover-title {
+      font-family: var(--ff-display);
+      font-style: italic;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      line-height: 1.25;
+      position: relative;
+      z-index: 1;
+    }
+
+    .book-info { padding: 1.1rem 1.1rem 1.2rem; }
+
+    .book-author {
+      font-size: 0.75rem;
+      font-family: var(--ff-mono);
+      color: #9e8a72;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.5rem;
+    }
+
+    .book-genre {
+      display: inline-block;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      border: 1px solid var(--crimson);
+      padding: 0.15rem 0.5rem;
+      border-radius: 2px;
+      margin-bottom: 0.8rem;
+    }
+
+    .book-price-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .book-price {
+      font-family: var(--ff-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--dusk);
+    }
+
+    .book-price-old {
+      font-size: 0.78rem;
+      text-decoration: line-through;
+      color: #b0a090;
+      margin-left: 0.3rem;
+    }
+
+    .add-btn {
+      background: var(--saffron);
+      border: none;
+      border-radius: 2px;
+      color: var(--ink);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.4rem 0.8rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .add-btn:hover { background: #d0730a; }
+
+    /* ── WHY US ── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 2.5rem;
+    }
+
+    .why-num {
+      font-family: var(--ff-display);
+      font-size: 3.5rem;
+      font-weight: 900;
+      color: var(--saffron);
+      opacity: 0.25;
+      line-height: 1;
+    }
+
+    .why-title {
+      font-family: var(--ff-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--dusk);
+      margin: 0.4rem 0 0.6rem;
+    }
+
+    .why-text { font-size: 0.88rem; color: #6b5844; line-height: 1.75; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-section { background: var(--dusk); color: var(--paper); }
+
+    .testimonials-section .section-title { color: var(--paper); }
+    .testimonials-section .section-label { color: var(--saffron); }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .testi-card {
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 4px;
+      padding: 1.8rem;
+      background: rgba(255,255,255,0.04);
+      transition: border-color 0.2s;
+    }
+
+    .testi-card:hover { border-color: var(--saffron); }
+
+    .testi-quote {
+      font-family: var(--ff-display);
+      font-style: italic;
+      font-size: 1rem;
+      color: #d6c5ae;
+      line-height: 1.75;
+      margin-bottom: 1.4rem;
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .testi-avatar {
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: var(--saffron);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-display);
+      font-weight: 700;
+      color: var(--ink);
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .testi-name {
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--paper);
+    }
+
+    .testi-role {
+      font-size: 0.72rem;
+      color: #9e8a72;
+      font-family: var(--ff-mono);
+      letter-spacing: 0.05em;
+    }
+
+    .stars { color: var(--saffron); font-size: 0.85rem; margin-bottom: 0.9rem; }
+
+    /* ── NEWSLETTER ── */
+    .newsletter-section {
+      background: var(--saffron);
+      color: var(--ink);
+    }
+
+    .newsletter-inner {
+      max-width: 560px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .newsletter-section .section-label { color: rgba(26,18,8,0.5); }
+    .newsletter-section .section-title { color: var(--ink); }
+
+    .newsletter-form {
+      margin-top: 2rem;
+      display: flex;
+      gap: 0.8rem;
+    }
+
+    .newsletter-input {
+      flex: 1;
+      padding: 0.85rem 1.1rem;
+      border: 2px solid rgba(26,18,8,0.25);
+      border-radius: 2px;
+      background: rgba(255,255,255,0.4);
+      font-family: var(--ff-body);
+      font-size: 0.9rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .newsletter-input::placeholder { color: rgba(26,18,8,0.45); }
+    .newsletter-input:focus { border-color: var(--dusk); }
+
+    .newsletter-btn {
+      background: var(--dusk);
+      color: var(--paper);
+      border: none;
+      border-radius: 2px;
+      padding: 0.85rem 1.5rem;
+      font-family: var(--ff-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .newsletter-btn:hover { background: var(--ink); }
+
+    .newsletter-note { font-size: 0.75rem; margin-top: 0.8rem; opacity: 0.5; }
+
+    /* ── CONTACT ── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5vw;
+      align-items: start;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .contact-icon {
+      width: 44px; height: 44px;
+      background: var(--mist);
+      border: 1.5px solid rgba(0,0,0,0.08);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .contact-detail-label {
+      font-family: var(--ff-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 0.25rem;
+    }
+
+    .contact-detail-val {
+      font-size: 0.9rem;
+      color: var(--dusk);
+      font-weight: 500;
+    }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+
+    .form-label {
+      font-size: 0.75rem;
+      font-family: var(--ff-mono);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #9e8a72;
+    }
+
+    .form-input, .form-textarea {
+      padding: 0.75rem 1rem;
+      border: 1.5px solid rgba(0,0,0,0.12);
+      border-radius: 2px;
+      background: var(--white);
+      font-family: var(--ff-body);
+      font-size: 0.9rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: var(--saffron); }
+    .form-textarea { resize: vertical; min-height: 110px; }
+
+    /* ── MAP PLACEHOLDER ── */
+    .map-placeholder {
+      background: var(--mist);
+      border: 1.5px dashed rgba(0,0,0,0.15);
+      border-radius: 4px;
+      height: 200px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-top: 2rem;
+      gap: 0.5rem;
+    }
+    .map-placeholder span { font-size: 1.8rem; }
+    .map-placeholder p { font-size: 0.78rem; color: #9e8a72; font-family: var(--ff-mono); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: #8a7460;
+      padding: 4rem 8vw 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand-name {
+      font-family: var(--ff-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--paper);
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-brand-name span { color: var(--saffron); }
+    .footer-tagline { font-size: 0.82rem; line-height: 1.7; max-width: 220px; }
+
+    .footer-col-title {
+      font-family: var(--ff-mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--saffron);
+      margin-bottom: 1.1rem;
+    }
+
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .footer-links a {
+      font-size: 0.85rem;
+      color: #8a7460;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--paper); }
+
+    .footer-divider { border: none; border-top: 1px solid rgba(255,255,255,0.06); margin-bottom: 1.5rem; }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .footer-copy { font-size: 0.75rem; }
+
+    .footer-socials { display: flex; gap: 1rem; }
+    .footer-socials a {
+      width: 34px; height: 34px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      text-decoration: none;
+      color: #8a7460;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .footer-socials a:hover { border-color: var(--saffron); color: var(--saffron); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 5rem 7vw 4rem; min-height: 60vh; }
+      .hero-left::before { display: none; }
+      .hero-right { min-height: 360px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--dusk); padding: 1.5rem 5vw; gap: 1.2rem; border-top: 1px solid rgba(255,255,255,0.08); }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .hero-stats { gap: 1.5rem; }
+      .newsletter-form { flex-direction: column; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; }
+      .section-pad { padding: 4.5rem 6vw; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .book-stack { animation: none; }
+      .marquee-inner { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">New <span>Mishra</span> Book House</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#categories">Categories</a></li>
+      <li><a href="#books">Books</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Visit Us</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-left">
+      <p class="hero-eyebrow">Est. Lucknow · Trusted Since Decades</p>
+      <h1 class="hero-title">Every Page<br/>is a <em>New<br/>World.</em></h1>
+      <p class="hero-sub">From textbooks to timeless classics, New Mishra Book House is Lucknow's most-loved destination for readers of every age.</p>
+      <div class="hero-actions">
+        <a href="#books" class="btn-primary">Browse Our Collection</a>
+        <a href="#contact" class="btn-outline">Find Our Store</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">50,000+</div>
+          <div class="stat-label">Titles in Stock</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">30+</div>
+          <div class="stat-label">Years of Trust</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">12</div>
+          <div class="stat-label">Subject Areas</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="book-stack">
+        <div class="book b1">Mathematics</div>
+        <div class="book b2">Science & Nature</div>
+        <div class="book b3">History & Culture</div>
+        <div class="book b4">Hindi Literature</div>
+        <div class="book b5">Competitive Exams</div>
+        <div class="book b6">Children's Corner</div>
+      </div>
+      <p class="hero-quote">"A reader lives a thousand lives before he dies."</p>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-strip">
+    <div class="marquee-inner">
+      📚 NCERT &amp; CBSE Textbooks &nbsp;·&nbsp; Competitive Exam Books &nbsp;·&nbsp; Hindi &amp; English Literature &nbsp;·&nbsp; Children's Books &nbsp;·&nbsp; Stationery &amp; Supplies &nbsp;·&nbsp; Medical &amp; Engineering &nbsp;·&nbsp; Fiction &amp; Non-fiction &nbsp;·&nbsp; Law &amp; Commerce &nbsp;·&nbsp; Self Help &amp; Motivation &nbsp;·&nbsp; 📚 NCERT &amp; CBSE Textbooks &nbsp;·&nbsp; Competitive Exam Books &nbsp;·&nbsp; Hindi &amp; English Literature &nbsp;·&nbsp; Children's Books &nbsp;·&nbsp; Stationery &amp; Supplies &nbsp;·&nbsp; Medical &amp; Engineering &nbsp;·&nbsp; Fiction &amp; Non-fiction &nbsp;·&nbsp; Law &amp; Commerce &nbsp;·&nbsp; Self Help &amp; Motivation &nbsp;·&nbsp;
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <section class="section-pad" id="categories">
+    <div class="section-header">
+      <p class="section-label">Browse by Subject</p>
+      <h2 class="section-title">Find Your<br/><em>Next Read</em></h2>
+    </div>
+
+    <div class="categories-grid">
+      <a href="#" class="cat-card">
+        <span class="cat-icon">📐</span>
+        <div class="cat-name">Academic &amp; NCERT</div>
+        <div class="cat-count">8,500+ titles</div>
+      </a>
+      <a href="#" class="cat-card">
+        <span class="cat-icon">🏆</span>
+        <div class="cat-name">Competitive Exams</div>
+        <div class="cat-count">4,200+ titles</div>
+      </a>
+      <a href="#" class="cat-card">
+        <span class="cat-icon">📖</span>
+        <div class="cat-name">Hindi Literature</div>
+        <div class="cat-count">6,000+ titles</div>
+      </a>
+      <a href="#" class="cat-card">
+        <span class="cat-icon">⚖️</span>
+        <div class="cat-name">Law &amp; Commerce</div>
+        <div class="cat-count">1,900+ titles</div>
+      </a>
+      <a href="#" class="cat-card">
+        <span class="cat-icon">🧬</span>
+        <div class="cat-name">Medical &amp; Science</div>
+        <div class="cat-count">3,100+ titles</div>
+      </a>
+      <a href="#" class="cat-card">
+        <span class="cat-icon">🧘</span>
+        <div class="cat-name">Self-Help &amp; Spirituality</div>
+        <div class="cat-count">2,400+ titles</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- FEATURED BOOKS -->
+  <section class="section-pad books-section" id="books">
+    <div class="section-header">
+      <p class="section-label">Curated Picks</p>
+      <h2 class="section-title">This Month's<br/><em>Bestsellers</em></h2>
+    </div>
+
+    <div class="books-grid">
+
+      <div class="book-card">
+        <div class="book-cover" style="background: linear-gradient(135deg, #7B3F00, #C06000);">
+          <div class="book-cover-title">Godan</div>
+        </div>
+        <div class="book-info">
+          <div class="book-author">Munshi Premchand</div>
+          <span class="book-genre">Hindi Classic</span>
+          <div class="book-price-row">
+            <div><span class="book-price">₹180</span><span class="book-price-old">₹220</span></div>
+            <button class="add-btn">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <div class="book-cover" style="background: linear-gradient(135deg, #1B4D8E, #2C6FAD);">
+          <div class="book-cover-title">Wings of Fire</div>
+        </div>
+        <div class="book-info">
+          <div class="book-author">A.P.J. Abdul Kalam</div>
+          <span class="book-genre">Biography</span>
+          <div class="book-price-row">
+            <div><span class="book-price">₹165</span><span class="book-price-old">₹195</span></div>
+            <button class="add-btn">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <div class="book-cover" style="background: linear-gradient(135deg, #2C5F2E, #4A8A4C);">
+          <div class="book-cover-title">The Guide</div>
+        </div>
+        <div class="book-info">
+          <div class="book-author">R.K. Narayan</div>
+          <span class="book-genre">English Fiction</span>
+          <div class="book-price-row">
+            <div><span class="book-price">₹195</span><span class="book-price-old">₹250</span></div>
+            <button class="add-btn">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <div class="book-cover" style="background: linear-gradient(135deg, #8B1A1A, #B52525);">
+          <div class="book-cover-title">Quantitative Aptitude</div>
+        </div>
+        <div class="book-info">
+          <div class="book-author">R.S. Aggarwal</div>
+          <span class="book-genre">Competitive</span>
+          <div class="book-price-row">
+            <div><span class="book-price">₹590</span><span class="book-price-old">₹695</span></div>
+            <button class="add-btn">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <div class="book-cover" style="background: linear-gradient(135deg, #4A4A6A, #6A6A9A);">
+          <div class="book-cover-title">Midnight's Children</div>
+        </div>
+        <div class="book-info">
+          <div class="book-author">Salman Rushdie</div>
+          <span class="book-genre">Literary Fiction</span>
+          <div class="book-price-row">
+            <div><span class="book-price">₹399</span><span class="book-price-old">₹499</span></div>
+            <button class="add-btn">Add</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <div class="book-cover" style="background: linear-gradient(135deg, #5C4000, #8A6200);">
+          <div class="book-cover-title">Chanakya Neeti</div>
+        </div>
+        <div class="book-info">
+          <div class="book-author">Chanakya</div>
+          <span class="book-genre">Self-Help</span>
+          <div class="book-price-row">
+            <div><span class="book-price">₹120</span><span class="book-price-old">₹150</span></div>
+            <button class="add-btn">Add</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section class="section-pad" id="about">
+    <div class="section-header">
+      <p class="section-label">Why Readers Choose Us</p>
+      <h2 class="section-title">More Than Just<br/>a <em>Bookstore</em></h2>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-num">01</div>
+        <div class="why-title">Unmatched Selection</div>
+        <p class="why-text">Over 50,000 titles across 12 categories — from Premchand to programming, Vedas to VLSI. If it's in print, we likely have it.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-num">02</div>
+        <div class="why-title">Expert Guidance</div>
+        <p class="why-text">Our staff are readers themselves. Whether you're a student, a professional, or a curious soul, we'll help you find exactly the right book.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-num">03</div>
+        <div class="why-title">Best Prices in Lucknow</div>
+        <p class="why-text">We source directly and sell honestly. Find discounts on textbooks, competitive exam guides, and bulk purchases for schools.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-num">04</div>
+        <div class="why-title">Quick Order Service</div>
+        <p class="why-text">Can't find a title? Place an order and we'll have it within days. We source from publishers across India.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section-pad testimonials-section" id="testimonials">
+    <div class="section-header">
+      <p class="section-label">What Readers Say</p>
+      <h2 class="section-title">Loved by<br/><em>Lucknow</em></h2>
+    </div>
+
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">The best bookshop in the city. They had my entire UPSC reading list in one place — and the owner himself gave me excellent suggestions.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">AK</div>
+          <div>
+            <div class="testi-name">Aman Kapoor</div>
+            <div class="testi-role">UPSC Aspirant</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">A treasure trove for Hindi literature lovers. Found beautiful hardbound editions of Premchand and Dinkar that were unavailable online.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">SM</div>
+          <div>
+            <div class="testi-name">Shreya Mishra</div>
+            <div class="testi-role">Literature Student</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p class="testi-quote">Genuine rates and authentic prints. I have been ordering reference books for my entire academic batch here for over three years now.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">RJ</div>
+          <div>
+            <div class="testi-name">Rajesh Joshi</div>
+            <div class="testi-role">Research Scholar</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section class="section-pad newsletter-section">
+    <div class="newsletter-inner">
+      <p class="section-label">Join Our Literary Circle</p>
+      <h2 class="section-title">Subscribe for <em>Updates</em></h2>
+      <p style="margin-top: 1rem; font-size: 0.95rem; opacity: 0.85;">Receive tailored logs of new historical arrivals, examination updates, and community catalogs curated right from Aminabad.</p>
+      <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!'); font-size: 0.9rem;">
+        <input type="email" class="newsletter-input" placeholder="Your email address" required />
+        <button type="submit" class="newsletter-btn">Subscribe</button>
+      </form>
+      <p class="newsletter-note">We value your literary privacy. Unsubscribe cleanly at any turn.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section-pad" id="contact">
+    <div class="section-header">
+      <p class="section-label">Get in Touch</p>
+      <h2 class="section-title">Visit Our <em>Haven</em></h2>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-detail-label">Address</div>
+            <div class="contact-detail-val">3, Book Market, Near Jhandeywala Park, Aminabad, Lucknow, Uttar Pradesh 226018</div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div class="contact-detail-label">Phone Support</div>
+            <div class="contact-detail-val">+91-9454886611<br/>+91-7007683893</div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">⏰</div>
+          <div>
+            <div class="contact-detail-label">Timings</div>
+            <div class="contact-detail-val">10:00 AM – 10:00 PM <br/><em>
+          </div>
+        </div>
+
+        <div class="map-placeholder">
+          <span>🗺️</span>
+          <p>Aminabad Book Market Center</p>
+          <p style="font-size: 0.7rem; color: var(--ink); opacity: 0.6;">Opposite Jhandeywala Park</p>
+        </div>
+      </div>
+
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('Message logged successfully! We will check availability.');">
+        <div class="form-group">
+          <label class="form-label">Full Name</label>
+          <input type="text" class="form-input" placeholder="Enter your full name" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-input" placeholder="name@domain.com" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Book Request / Custom Query</label>
+          <textarea class="form-textarea" placeholder="List your desired titles, authors, or institutional requirements cleanly here..." required></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="align-self: flex-start; margin-top: 0.5rem;">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">New <span>Mishra</span> Book House</div>
+        <p class="footer-tagline">Preserving standard wisdom, backing examination runs, and feeding literature across generational horizons.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="#categories">Categories</a></li>
+          <li><a href="#books">Bestsellers</a></li>
+          <li><a href="#about">About Core</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Main Subjects</div>
+        <ul class="footer-links">
+          <li><a href="#categories">NCERT Tracks</a></li>
+          <li><a href="#categories">Competitive Entries</a></li>
+          <li><a href="#categories">Hindi Masterpieces</a></li>
+          <li><a href="#categories">Law &amp; Sciences</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Connect</div>
+        <ul class="footer-links">
+          <li><a href="#contact">Store Directions</a></li>
+          <li><a href="tel:+919335763583">Call Desk</a></li>
+          <li><a href="#contact">Order Queries</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="footer-divider" />
+
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 New Mishra Book House. All rights reserved.</p>
+      <div class="footer-socials">
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="Twitter">TW</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOBILE NAVIGATION SCRIPT -->
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    // Close menu automatically when any menu asset link is targeted on small screens
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>
